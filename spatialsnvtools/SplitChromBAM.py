@@ -29,9 +29,6 @@ def split_bam(bam,chrom,sample_name,output_dir,logger):
     m = 0
     for read in inputfile.fetch(str(chrom), multiple_iterators=True):
         output.write(read)
-        m+=1
-        if m>1000000:
-            break
     logger.info(f'{chrom} finish')
     inputfile.close()
     output.close()

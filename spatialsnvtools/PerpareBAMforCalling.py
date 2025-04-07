@@ -11,7 +11,7 @@ from .utils import logger_config,DirCheck,RunCMD
 def Code_barcode(barcode):
     code = {1:'AA',2:'AT',3:'AC',4:'AG',5:'TA',6:'TT',7:'TC',8:'TG',9:'CA',0:'CC'}
     barcode_list = list()
-    for m in barcode:
+    for m in str(barcode):
         barcode_list.append(code[int(m)])
     return ''.join(barcode_list)
 
@@ -64,12 +64,24 @@ def BarcodeUMIBinding(bam,outbam,stereo = False,barcode_tag = "CR",umi_tag = 'UR
                 intissue = location_dict.get(location,False)
                 if intissue:
                     new_barcode = Code_barcode(x) + '-' + Code_barcode(y)
-                    new_umi = Decoding_umi(umi)
+                    if umi.isdigit():
+                        new_umi = Decoding_umi(umi)
+                    else:
+                        new_umi = umi
                     encode_barcode = new_barcode + '-' + new_umi
                     read.set_tag('LY', encode_barcode)
-                    read.set_tag('CB', new_barcode)
-                    read.set_tag('UM', new_umi)
+                    read.set_tag('UM',new_umi)
                     output.write(read)
+            else:
+                new_barcode = Code_barcode(x) + '-' + Code_barcode(y)
+                if umi.isdigit():
+                    new_umi = Decoding_umi(umi)
+                else:
+                    new_umi = umi
+                encode_barcode = new_barcode + '-' + new_umi
+                read.set_tag('LY', encode_barcode)
+                read.set_tag('UM',new_umi)
+                output.write(read)
     output.close()
     inputfile.close()
 

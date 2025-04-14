@@ -66,7 +66,7 @@ class Config:
             "--VALIDATION_STRINGENCY",
             "SILENT",
             "--VERBOSITY",
-            "WARNING",
+            "ERROR",
             "--QUIET",
             "true",
         ]

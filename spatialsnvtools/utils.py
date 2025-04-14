@@ -99,7 +99,7 @@ def RunCMD(cmd: list[Any],name: str,id: str,logger):
     cmd = [str(arg) for arg in cmd]
     proc = run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
-        raise Exception(f"Error running {name}:\n\t{proc.stderr}")
+        print(f"Running {name} meet:\n\t{proc.stderr}")
     else:
         logger.info(f"{id}-{name}: completed")
 

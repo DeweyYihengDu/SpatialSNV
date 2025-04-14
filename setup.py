@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="spatialsnv",  
-    version="1.0.4", 
+    version="1.0.5", 
     description="A toolkit for spatial SNV analysis", 
     long_description=long_description,
     long_description_content_type="text/markdown",

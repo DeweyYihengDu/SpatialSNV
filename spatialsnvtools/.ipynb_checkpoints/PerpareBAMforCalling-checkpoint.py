@@ -188,7 +188,8 @@ def PerpareBAMforCalling_process(bam,outdir,proxy,barcode_tag,umi_tag,stereo,gem
     
     logger.info(f"Tmp dir: {tmpdir}")
     DirCheck(tmpdir,create = True)
-    
+    print(gem)
+    print(type(gem))
     if stereo and gem != None:
         LocationDict = LoadLocation(gem,xsetoff,ysetoff)
     else:

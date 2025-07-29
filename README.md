@@ -22,7 +22,7 @@ We recommend using Python version 3.10.14. You also need to install the followin
 ### Splitting BAM File by Chromosome for Speed Up (Optional)
 
 ```bash
-spatialsnvtools SplitChromBAM -b demo.bam –s demo –o demo_split -@ 10 --only_autosome
+spatialsnvtools SplitChromBAM -b demo.bam -s demo -o demo_split -@ 10 --only_autosome
 
 ```
 
